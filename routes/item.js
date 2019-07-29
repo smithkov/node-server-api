@@ -14,7 +14,7 @@ var multer = require('multer');
 
 var Storage = multer.diskStorage({
      destination: function(req, file,callback) {
-         callback(null, "./Images");
+         callback(null, "./public/Images");
      },
      filename: function(req, file, callback) {
          //file_name = file.fieldname + "_" +Date.now() + "_" + file.originalname;
@@ -66,7 +66,7 @@ console.log(req.route )
 
               for(var i=0; i< req.files.length; i++ ){
                //array.push({item:item._id, path:req.files[i].filename })
-               fs.unlink("./Images/"+req.files[i].filename)
+               fs.unlink("./public/Images/"+req.files[i].filename)
                //console.log(req.files[i].originalname)
               }
               return res.status(400).send({ auth: false, token: null,error:true, msg:error.details[0].message });

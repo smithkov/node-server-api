@@ -19,7 +19,7 @@ var exphbs = require('express-handlebars');
 mongoose.connect(process.env.DB_CONNECTION,{useNewUrlParser: true},()=>console.log(`db connected`));
 //console.log(UserType.schema.path('name').enumValues[0])
 
-app.use(express.static(path.join(__dirname, 'images')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({defaultLayout:'layout'}));
