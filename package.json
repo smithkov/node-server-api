@@ -1,0 +1,35 @@
+{
+  "name": "afrisian",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Nnamdi",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^15.1.0",
+    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "dotenv": "^8.0.0",
+    "express": "*",
+    "express-fileupload": "^1.1.5",
+    "express-joi-validation": "^2.0.0",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "express-handlebars": "^3.1.0",
+    "lodash": "^4.17.15",
+    "mongodb": "^3.2.7",
+    "mongoose": "^5.6.4",
+    "mongoose-unique-validator": "^2.0.2",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2"
+  },
+  "engine": {
+    "node": "8.11.3"
+  }
+}
