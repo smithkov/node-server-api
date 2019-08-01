@@ -38,6 +38,9 @@ module.exports.getById = (id, callback)=> {
 module.exports.getByName = (name, callback)=> {
  Item.findOne({name: name}, callback);
 }
+module.exports.getByCategory = (id, callback)=> {
+ Item.find({category: id}, callback);
+}
 
 // module.exports.getByItemId = function(id, callback) {
 //  Item.findOne({Item: id}, callback).populate('hQualification').populate('nationality').populate('Item').populate('cityOfChoice').populate('pQualification').populate('schoolWish1').populate('schoolWish2').populate('level').populate('course1').populate('course2');

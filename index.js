@@ -12,6 +12,7 @@ var user = require('./routes/user');
 var itemImage = require('./routes/itemImage');
 var category = require('./routes/category');
 var item = require('./routes/item');
+var shop = require('./routes/shop');
 var index = require('./routes/index');
 var exphbs = require('express-handlebars');
 
@@ -28,6 +29,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use('api/', user);
 app.use('/api/category',category);
+app.use('/api/shop',shop);
 app.use('/api/image',itemImage);
 app.use('/api/item',item);
 app.use('/',index);

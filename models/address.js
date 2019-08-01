@@ -4,7 +4,10 @@ const addressSchema = new Schema({
   address: {
      type:String
    },
-  postcode:{
+  postCode:{
+    type:String
+   },
+   city:{
     type:String
    },
   user:{

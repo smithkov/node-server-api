@@ -37,9 +37,10 @@ var Storage = multer.diskStorage({
          })
      })
  });
-router.get('/items', (req, res) => {
+router.get('/getCategory/:id', (req, res) => {
 
-    Item.getAll(function(err,data){
+    var categoryId = req.params.id;
+    Item.getByCategory(categoryId,function(err,data){
       return res.send({ auth: false, token: null,error:false, data:data });
     })
 });
@@ -57,6 +58,8 @@ console.log(req.route )
          else{
            var name = req.body.name;
            var price =req.body.price;
+           var shop =req.body.shop;
+           var category =req.body.category;
            var weight =req.body.weight;
             //Validation error is checked
             var schema = Config.validation.item();
@@ -77,6 +80,8 @@ console.log(req.route )
                   name: name,
                   price: price,
                   weight:weight,
+                  category:category,
+                  shop:shop,
                   defaultImg:req.files[0].filename
                 });
 

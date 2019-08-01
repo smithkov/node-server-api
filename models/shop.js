@@ -8,11 +8,13 @@ const shopSchema = new Schema({
    phone: {
       type:String
   },
-   user:{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
-    },
-    userType: {type: String, enum: ['African', 'Asian']}
+  logo: {
+      type:String
+  },
+ user:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 })
 
 var User = module.exports = mongoose.model('Shop', shopSchema);
