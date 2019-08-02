@@ -25,6 +25,16 @@ var mongoose = require('mongoose');
      })
  });
 
+router.get('/item/:id',function(req, res) {
+  var itemId = req.params.id;
+  ItemImage.findByItem(itemId,function(err, data){
+    if(err)
+      return res.status(500).send({ auth: false,error:true, msg:"Oops! something went wrong" });
+    else
+      return res.send({ auth: true, token: null,error:false, data:data});
+
+  })
+});
 
 
 module.exports = router;
