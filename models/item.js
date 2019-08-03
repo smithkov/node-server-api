@@ -8,6 +8,7 @@ const itemSchema = new Schema({
    price:String,
    weight:String,
    defaultImg:String,
+   definition:String,
    images : [],
    category:{
       type: mongoose.Schema.Types.ObjectId,

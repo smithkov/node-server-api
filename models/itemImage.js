@@ -18,7 +18,7 @@ module.exports.getAll = (callback, limit) =>{
 }
 
 module.exports.findByItem = (id,callback) =>{
- ItemImage.find({item:id},callback);
+ ItemImage.find({item:id},callback).populate('item');
 }
 
 module.exports.remove = (id, callback)=>{

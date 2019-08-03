@@ -57,6 +57,7 @@ console.log(req.route )
          }
          else{
            var name = req.body.name;
+           var definition = req.body.definition;
            var price =req.body.price;
            var shop =req.body.shop;
            var category =req.body.category;
@@ -81,6 +82,7 @@ console.log(req.route )
                   price: price,
                   weight:weight,
                   category:category,
+                  definition:definition,
                   shop:shop,
                   defaultImg:req.files[0].filename
                 });
