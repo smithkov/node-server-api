@@ -1,43 +1,14 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-const finalOrderSchema = new Schema({
-   date: {
-      type: Date,
-      default: Date.now
-    },
-   refId:String,
-   receiptId:String,
-   sum: Number,
-   user:{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
-    }
-})
-
-var FinalOrder = module.exports = mongoose.model('FinalOrder', finalOrderSchema);
-
-module.exports.getAll = (callback, limit) =>{
- FinalOrder.find(callback).limit(limit);
-}
-
-module.exports.remove = (id, callback)=>{
-	var query = {_id:id};
-
-	FinalOrder.remove(query,callback);
-}
-
-module.exports.getById = (id, callback)=> {
- FinalOrder.findById(id, callback);
-}
-
-module.exports.add = (data, callback)=> {
- FinalOrder.insert(data, callback);
-}
-
-
-module.exports.update = (id,update, options, callback)=>{
-	var query = {_id:id};
-
-	FinalOrder.findOneAndUpdate(query,update, options,callback);
-}
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const FinalOrder = sequelize.define('FinalOrder', {
+    sum: DataTypes.DECIMAL,
+    receiptId: DataTypes.STRING,
+    refId: DataTypes.STRING,
+    userId: DataTypes.INTEGER
+  }, {});
+  FinalOrder.associate = function(models) {
+    // associations can be defined here
+    FinalOrder.belongsTo(models.User);
+  };
+  return FinalOrder;
+};

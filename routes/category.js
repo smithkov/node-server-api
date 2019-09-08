@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const Category = require('../models/category')
 const Config = require('../config')
 const jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
@@ -8,12 +7,16 @@ const environment = process.env.NODE_ENV;
 const stage = require('../config')[environment];
 const Joi = require('joi');
 var multer  =   require('multer');
+const Query = new require('../config/query');
+const model = require('../models');
+const Category =  require('../models').Category;
 
 router.get('/list', function(req, res) {
-  Category.getAll((err,category)=>{
+  let queryCategory = new Query(Category);
+  queryCategory.all().then(category=>{
+    return res.status(200).send({ data: category });
+  }).catch(err=>{
      if (err) return res.status(500).send(Config.errorMesg.a500)
-
-     return res.status(200).send({ data: category });
   })
 });
 
@@ -50,7 +53,7 @@ router.post('/add',upload.single('file'),function(req,res){
           name : name,
           path:req.file.filename
         })
-        
+
         category.save(function(err,data){
            if (err){
               res.send({ auth: false, token: null,error:true, data:err });
@@ -59,9 +62,9 @@ router.post('/add',upload.single('file'),function(req,res){
             //console.log(data)
             res.send({ auth: false, token: null,error:false, data:data });
            }
-            
+
         })
-        
+
     //});
 });
 
